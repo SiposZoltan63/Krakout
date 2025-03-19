@@ -20,6 +20,7 @@ public partial class MainWindow : Window
 {
         double xSeb = 5;
         double ySeb = 5;
+        int alapySeb = 5;
         int pontszam = 0;
     public MainWindow()
     {
@@ -37,15 +38,18 @@ public partial class MainWindow : Window
         var labdaY = Canvas.GetTop(labda);
         var labdaX = Canvas.GetLeft(labda);
         //nézzük a képernyő határait
-        if (labdaX > 950) xSeb = -5;
-        if (labdaX < 0) xSeb = 5;
+        if (labdaX < 0 || labdaX > 950) xSeb *= -1;
         if (labdaY > 550)
-        { ySeb = -5;
+        {
             //vonjon le egy pontot
-          lbPontszam.Content = --pontszam;
+            pontszam = 0;
+          lbPontszam.Content = 0;
+          Canvas.SetTop(labda, 0);
+          labdaY = 0;
+          ySeb = alapySeb;
         }
 
-        if (labdaY < 0) ySeb = 5;
+        if (labdaY < 0) ySeb *= -1;
         // ütközési vizsgálat a labda és az ütő között
         var jatekosX = Canvas.GetLeft(jatekos);
         var jatekosY = Canvas.GetTop(jatekos);
@@ -54,7 +58,7 @@ public partial class MainWindow : Window
             && labdaY + labda.Height > jatekosY
             && labdaY < jatekosY + jatekos.Height)
         {
-            ySeb = -5;
+            ySeb *= -1.3;
             lbPontszam.Content = ++pontszam;
         }
             // a labda mozgatása
