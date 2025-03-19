@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:Krakout"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <Grid x:Name="jatekter">
+    <Grid>
         <Label Content="Label" HorizontalAlignment="Left" Margin="51,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.561,0.581"/>
-        <Ellipse x:Name="labda" HorizontalAlignment="Left" Fill="Green" Height="30" Margin="457,196,0,0" Stroke="Black" VerticalAlignment="Top" Width="30"/>
-        <Rectangle HorizontalAlignment="Left" Height="20" Fill="Black" Margin="412,540,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
+        <Canvas x:Name="jatekter">
+            <Ellipse x:Name="labda" Fill="Green" Height="30" Stroke="Black" Width="30" HorizontalAlignment="Left" Canvas.Left="457" Canvas.Top="196" VerticalAlignment="Top"/>
+            <Rectangle x:Name="jatekos" Height="20" Fill="Black" Stroke="Black" Width="120" HorizontalAlignment="Left" Canvas.Left="412" Canvas.Top="540" VerticalAlignment="Top"/>
+        </Canvas>
 
     </Grid>
 </Window>
