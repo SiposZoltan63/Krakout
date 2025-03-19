@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Krakout"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <Grid>
+    <Grid x:Name="jatekter">
+        <Label Content="Label" HorizontalAlignment="Left" Margin="51,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.561,0.581"/>
+        <Ellipse x:Name="labda" HorizontalAlignment="Left" Fill="Green" Height="30" Margin="457,196,0,0" Stroke="Black" VerticalAlignment="Top" Width="30"/>
+        <Rectangle HorizontalAlignment="Left" Height="20" Fill="Black" Margin="412,540,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
