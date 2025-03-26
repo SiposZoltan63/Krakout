@@ -62,13 +62,15 @@ public partial class MainWindow : Window
         var labdaX = Canvas.GetLeft(labda);
         //nézzük a képernyő határait
         if (labdaX < 0 || labdaX > 950) xSeb *= -1;
-        if (labdaY > 600)
+        if (labdaY > 550)
         {
             //vonjon le egy pontot
             lbPontszam.Content = --pontszam;
-            Canvas.SetTop(labda, Canvas.GetTop(jatekos) - labda.Height);
-            Canvas.SetLeft(labda, Canvas.GetLeft(jatekos) - jatekos.Width / 2);
-            labdaY = 0;
+            labdaX = Canvas.GetLeft(jatekos) + jatekos.Width / 2;
+            labdaY = Canvas.GetTop(jatekos) - labda.Height;
+            Canvas.SetLeft(labda, labdaX);
+            Canvas.SetTop(labda, labdaY);
+            ySeb = alapSeb;
         }
 
         if (labdaY < 0) ySeb *= -1;
