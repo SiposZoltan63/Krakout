@@ -6,6 +6,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -25,10 +26,21 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var ido = new DispatcherTimer();
+        var tegla = new Image();
+        tegla.Source = new BitmapImage(new Uri("tegla.png", UriKind.Relative));
+        tegla.Width = 90;
+        tegla.Height = 20;
+        tegla.Stretch = Stretch.Fill;
+        jatekter.Children.Add(tegla);
+
+        labda.CacheMode = new BitmapCache();
+        /*var ido = new DispatcherTimer();
         ido.Interval = TimeSpan.FromMilliseconds(1);
         ido.Tick += mozgatas;
-        ido.Start();
+        ido.Start();*/
+        CompositionTarget.Rendering += mozgatas;
+        Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata
+        { DefaultValue = 60 });
     }
 
     private void mozgatas(object? sender, EventArgs e)
