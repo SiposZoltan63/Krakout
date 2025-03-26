@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="img\tegla.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\tegla.jpg" />
+  </ItemGroup>
+
 </Project>

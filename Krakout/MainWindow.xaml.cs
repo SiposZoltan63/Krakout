@@ -26,12 +26,23 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        Cursor = Cursors.None;
+
+        for (int j = 0; j < 5; j++)
+        {
+        for (int i = 0; i < 10; i++)
+        {
         var tegla = new Image();
-        tegla.Source = new BitmapImage(new Uri("tegla.png", UriKind.Relative));
+        tegla.Source = new BitmapImage(new Uri("img/tegla.jpg", UriKind.Relative));
         tegla.Width = 90;
         tegla.Height = 20;
         tegla.Stretch = Stretch.Fill;
+        Canvas.SetLeft(tegla, i * 100);
+            Canvas.SetTop(tegla, j * 32);
         jatekter.Children.Add(tegla);
+        }
+        }
 
         labda.CacheMode = new BitmapCache();
         /*var ido = new DispatcherTimer();
@@ -73,8 +84,24 @@ public partial class MainWindow : Window
             ySeb *= -1.3;
             lbPontszam.Content = ++pontszam;
         }
-            // a labda mozgatása
-            Canvas.SetLeft(labda, labdaX + xSeb);
+
+        foreach (var tegla in jatekter.Children.OfType<Image>())
+        {
+        var teglaX = Canvas.GetLeft(tegla);
+        var teglaY = Canvas.GetTop(tegla);
+        if (labdaX + labda.Width > teglaX
+            && labdaX < teglaX + tegla.Width
+            && labdaY + labda.Height > teglaY
+            && labdaY < teglaY + tegla.Height)
+        {
+            ySeb *= -1;
+            jatekter.Children.Remove(tegla);
+            lbPontszam.Content = ++pontszam;
+                break;
+        }
+        }
+        // a labda mozgatása
+        Canvas.SetLeft(labda, labdaX + xSeb);
         Canvas.SetTop(labda, labdaY + ySeb);
 
     }
