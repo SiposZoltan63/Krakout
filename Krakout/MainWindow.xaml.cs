@@ -21,7 +21,7 @@ public partial class MainWindow : Window
 {
         double xSeb = 5;
         double ySeb = 5;
-        int alapySeb = 5;
+        int alapSeb = 5;
         int pontszam = 0;
     public MainWindow()
     {
@@ -62,14 +62,13 @@ public partial class MainWindow : Window
         var labdaX = Canvas.GetLeft(labda);
         //nézzük a képernyő határait
         if (labdaX < 0 || labdaX > 950) xSeb *= -1;
-        if (labdaY > 550)
+        if (labdaY > 600)
         {
             //vonjon le egy pontot
-            pontszam = 0;
-          lbPontszam.Content = 0;
-          Canvas.SetTop(labda, 0);
-          labdaY = 0;
-          ySeb = alapySeb;
+            lbPontszam.Content = --pontszam;
+            Canvas.SetTop(labda, Canvas.GetTop(jatekos) - labda.Height);
+            Canvas.SetLeft(labda, Canvas.GetLeft(jatekos) - jatekos.Width / 2);
+            labdaY = 0;
         }
 
         if (labdaY < 0) ySeb *= -1;
@@ -82,7 +81,6 @@ public partial class MainWindow : Window
             && labdaY < jatekosY + jatekos.Height)
         {
             ySeb *= -1.3;
-            lbPontszam.Content = ++pontszam;
         }
 
         foreach (var tegla in jatekter.Children.OfType<Image>())
